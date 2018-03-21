@@ -6,6 +6,7 @@ WORKDIR /root/app
 
 COPY . ./
 
-RUN sbt assembly; mv target/scala-2.12/app-assembly.jar ./; java -jar app-assembly.jar
+RUN sbt assembly \
+  && mv target/scala-2.12/app-assembly.jar ./
 
-#ENTRYPOINT ["./run_jar.sh"]
+ENTRYPOINT ["java", "-jar", "./app-assembly.jar"]
