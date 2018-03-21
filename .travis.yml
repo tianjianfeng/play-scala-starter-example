@@ -1,14 +1,24 @@
+# use Docker-based container (instead of OpenVZ)
+sudo: false
+
+cache:
+  directories:
+      - $HOME/.m2/repository
+      - $HOME/.sbt
+      - $HOME/.ivy2
+
 language: scala
 scala:
 # When updating Scala versions, also check the excludes
 # in build matrix below.
-- 2.11.12
+#- 2.11.12
 - 2.12.4
 jdk:
 - oraclejdk8
-- oraclejdk9
+  #- oraclejdk9
 
-script: sbt ++$TRAVIS_SCALA_VERSION test
+script: 
+  - sbt ++$TRAVIS_SCALA_VERSION test
 
 #env:
 #  matrix:
