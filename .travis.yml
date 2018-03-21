@@ -12,7 +12,8 @@ cache:
 
 before_install:
     - docker build -t play-scala-starter .
-    - docker run -d -p 
+    - docker run -d -p 9000:9000 play-scala-starter
+    - docker ps -a
 
 language: scala
 scala:
