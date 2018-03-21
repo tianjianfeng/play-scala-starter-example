@@ -1,5 +1,8 @@
 # use Docker-based container (instead of OpenVZ)
-sudo: false
+sudo: required
+
+services:
+    - docker
 
 cache:
   directories:
@@ -19,6 +22,9 @@ jdk:
 
 script: 
   - sbt ++$TRAVIS_SCALA_VERSION test
+
+RUN git clone https://github.com/tianjianfeng/play-scala-starter-example.git /root/app
+RUN cd /root/app; sbt assembly; mv target/scala-2.12/app-assembly.jar ./
 
 #env:
 #  matrix:

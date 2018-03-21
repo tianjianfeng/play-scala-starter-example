@@ -1,8 +1,11 @@
-FROM openjdk:8-jre-alpine
+#FROM openjdk:8-jre-alpine
+FROM hseeberger/scala-sbt
 
-RUN mkdir -p /opt/app
-WORKDIR /opt/app
+RUN mkdir -p /root/app
+WORKDIR /root/app
 
-COPY ./run_jar.sh ./app-assembly.jar ./
+COPY . ./
 
-ENTRYPOINT ["./run_jar.sh"]
+RUN sbt assembly; mv target/scala-2.12/app-assembly.jar ./; java -jar app-assembly.jar
+
+#ENTRYPOINT ["./run_jar.sh"]
