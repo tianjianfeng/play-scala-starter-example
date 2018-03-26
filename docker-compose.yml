@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  db:
+    build: db
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    volumes:
+      - .:/code
+#    image: docker.picsolve.net/us/associations:latest
+#    env_file: associations.env
+#    command: gosu play /opt/us-associations-0.0.1-SNAPSHOT/bin/us-associations
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
