@@ -11,6 +11,7 @@ scalaVersion := "2.12.4"
 crossScalaVersions := Seq("2.11.12", "2.12.4")
 
 libraryDependencies += guice
+libraryDependencies += "com.digitaltangible" %% "play-guard" % "2.2.0"
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
 
 // No need to run tests while building jar
