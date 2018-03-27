@@ -19,7 +19,8 @@ class SampleController @Inject()(components: ControllerComponents)(implicit syst
   extends AbstractController(components) {
 
   def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+    Ok
+//    Ok(views.html.index("Your new application is ready."))
   }
 
   // (3, 1f 5) allow 3 requests immediately and get a new token every 5 seconds
