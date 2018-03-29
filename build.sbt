@@ -16,7 +16,6 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.196",
   "com.typesafe.play" %% "play-slick" % "3.0.3",
   "com.typesafe.play" %% "play-slick-evolutions" % "3.0.3",
-  "org.flywaydb" % "flyway-core" % "4.1.2",
   "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
 )
 
