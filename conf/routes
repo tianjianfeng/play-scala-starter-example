@@ -16,5 +16,7 @@ GET     /version                controllers.HomeController.version
 
 POST    /upload                     controllers.HomeController.upload
 
+POST    /organisations              controllers.HomeController.createOrganisation
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(file)

@@ -8,9 +8,11 @@ import javax.inject._
 import akka.stream.IOResult
 import akka.stream.scaladsl._
 import akka.util.ByteString
+import models.OrganiserRepository
 import play.api._
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.libs.json.Json
 import play.api.libs.streams._
 import play.api.mvc.MultipartFormData.FilePart
 import play.api.mvc._
@@ -26,9 +28,9 @@ case class FormData(name: String)
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(cc: MessagesControllerComponents, conf: Configuration)
+class HomeController @Inject()(cc: MessagesControllerComponents, conf: Configuration, orgRepo: OrganiserRepository)
                               (implicit executionContext: ExecutionContext)
-  extends AbstractController(cc) {
+  extends MessagesAbstractController(cc) {
 
   private val logger = Logger(this.getClass)
 
@@ -95,6 +97,11 @@ class HomeController @Inject()(cc: MessagesControllerComponents, conf: Configura
 
   def version = Action {
     Ok(conf.get[String]("git_commit"))
+  }
+
+  def createOrganisation = Action.async(parse.json) { implicit request =>
+    orgRepo.create((request.body \ "name").as[String]) map (x => Ok(Json.toJson(x)))
+
   }
 
 }
