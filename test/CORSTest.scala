@@ -1,5 +1,4 @@
 import controllers.HomeController
-import org.scalatest.mockito.MockitoSugar
 
 import scala.concurrent.Future
 import org.scalatestplus.play._
@@ -11,7 +10,7 @@ import play.test.WithApplication
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class CORSTest extends PlaySpec with Results with MockitoSugar {
+class CORSTest extends PlaySpec with Results {
 
   "Example Page#index" should {
     "should be valid" in  {

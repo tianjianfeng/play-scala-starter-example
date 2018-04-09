@@ -1,22 +1,20 @@
 # --- !Ups
 
-CREATE TABLE "organiser" (
-    "id" bigint(20) NOT NULL AUTO_INCREMENT,
-    "name" varchar(255) NOT NULL,
-    "createdAt" timestamp not null DEFAULT current_timestamp,
-    PRIMARY KEY ("id")
+
+drop table if exists organiser;
+
+drop table if exists venue;
+
+CREATE TABLE organiser (
+    id SERIAL primary key,
+    name varchar(255) NOT NULL,
+    createdAt timestamp not null DEFAULT current_timestamp
 );
 
---CREATE TABLE "venue" (
---    "id" bigint(20) NOT NULL AUTO_INCREMENT,
---    "name" varchar(255) NOT NULL,
---    "organiserId" bigint references "organiser"("id"),
---    PRIMARY KEY ("id")
---);
 
 
 # --- !Downs
 
-drop table "organiser" if exists;
+drop table if exists organiser ;
 
-drop table "venue" if exists;
+drop table if exists venue ;
