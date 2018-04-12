@@ -1,9 +1,14 @@
 version: '3.3'
 services:
   db:
-    build: db
+    image: postgres
+    restart: always
     ports:
-      - "5432:5432"
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: jianfeng
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: activity
 
   web:
     build: .
