@@ -17,6 +17,7 @@ import play.api.libs.streams._
 import play.api.mvc.MultipartFormData.FilePart
 import play.api.mvc._
 import play.core.parsers.Multipart.FileInfo
+import views.html.welcome
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -44,7 +45,8 @@ class HomeController @Inject()(cc: MessagesControllerComponents, conf: Configura
     * Renders a start page.
     */
   def index = Action { implicit request =>
-    Ok(views.html.index(form))
+    Ok(views.html.welcome("hello"))
+//    Ok(views.html.index(form))
   }
 
   type FilePartHandler[A] = FileInfo => Accumulator[ByteString, FilePart[A]]
