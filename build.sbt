@@ -18,7 +18,6 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick" % "3.0.3",
   "com.typesafe.play" %% "play-slick-evolutions" % "3.0.3",
   "org.postgresql" % "postgresql" % "42.2.2",
-  "com.iheart" %% "play-swagger" % "0.7.4",
   "org.webjars" % "swagger-ui" % "3.14.0",
   specs2 % Test,
   "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test

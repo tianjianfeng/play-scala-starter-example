@@ -102,8 +102,13 @@ class HomeController @Inject()(cc: MessagesControllerComponents, conf: Configura
   }
 
   def createOrganisation = Action.async(parse.json) { implicit request =>
-    orgRepo.create((request.body \ "name").as[String]) map (x => Ok(Json.toJson(x)))
+    val name = (request.body \ "name").as[String]
 
+    (for {
+      optOrg <- orgRepo.getByName(name)
+    } yield {
+      optOrg.fold(ifEmpty = orgRepo.create(name) map (x => Ok(Json.toJson(x))))(_ =>Future.successful(UnprocessableEntity(s"$name already exists")))
+    }).flatten
   }
 
 }

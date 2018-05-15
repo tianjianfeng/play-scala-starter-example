@@ -76,6 +76,10 @@ class OrganiserRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(im
       ) += (name)
   }
 
+  def getByName(name: String): Future[Option[Organiser]] = db.run {
+    organiser.filter(_.name === name).result.headOption
+  }
+
   /**
     * List all the people in the database.
     */
